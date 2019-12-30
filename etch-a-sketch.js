@@ -10,7 +10,8 @@ const shakebutton = document.querySelector('.shake');
 const { width, height } = canvas;
 
 // Creamos un punto aleatorio donde empiece el dibujo
-let x = Math.floor(Math.random() * width)
+let x = Math.floor(Math.random() * width);
+let y = Math.floor(Math.random() * height);
 
 
 ctx.lineJoin = 'round';
@@ -18,22 +19,30 @@ ctx.lineCap = 'round';
 ctx.lineWidth = 10;
 
 ctx.beginPath(); // Empieza el punto para dibujar
-ctx.moveTo(x, 200);
-ctx.lineTo(x, 200);
+ctx.moveTo(x, y);
+ctx.lineTo(x, y);
 ctx.stroke();
 
 
+// Escribir una funcion de dibujar, esto lleva destructuring
+function draw({ key }) {
+    console.log(key);
+}
 
-// Escribir una funcion de dibujar
 
+// Escribir un handler para las flechas.
+function handleKey(e) {
+    if (e.key.includes('Arrow')) {
+        e.preventDefault();
+        draw({ key: e.key });
 
-
-// Escribir un handler para las llaves.
-
+    }
+}
 
 
 // Una funcion para limpiar.
 
 
 
-// Listen las flechas.
+// Escuchar las flechas.
+window.addEventListener('keydown', handleKey);
