@@ -278,7 +278,7 @@ canvas {
 }
 
 canvas.shake {
-	animation: shake 0.5s linear 1;
+	animation: shake 0.9s linear 2;
 }
 
 @keyframes shake {
